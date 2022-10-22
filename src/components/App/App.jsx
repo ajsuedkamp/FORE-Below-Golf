@@ -20,6 +20,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import GolfHistory from '../GolfHistory/GolfHistory';
+import VenueDetails from '../VenueDetails/VenueDetails';
 
 import './App.css';
 
@@ -52,6 +53,11 @@ function App() {
             exact 
             path="/golf_history">
               <GolfHistory />
+          </Route>
+          <Route 
+            exact 
+            path="/venuedetails">
+              <VenueDetails />
           </Route>
 
           {/* For protected routes, the view could show one of several things on the same route.
