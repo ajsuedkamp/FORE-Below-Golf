@@ -24,7 +24,16 @@ function GolfHistory() {
             {
                 venueList.map(venue => {
                     return (
-                    <div>{venue.venue_name} {venue.type}</div>
+                    <div key={venue.id}>
+                    Venue: {venue.venue_name}
+                    <br></br>
+                    Type: {venue.type}
+                    <br></br>
+                    Yardage: {venue.yardage}
+                    <br></br>
+                    Date: {venue.date}
+                    
+                    </div>
                     )
                 })
             }
