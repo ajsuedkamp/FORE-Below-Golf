@@ -28,6 +28,10 @@ function Nav() {
               Home
             </Link>
 
+            <Link className="navLink" to="/golf_history">
+              Golf History
+            </Link>
+
             <Link className="navLink" to="/info">
               Info Page
             </Link>
