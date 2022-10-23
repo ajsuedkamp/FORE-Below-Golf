@@ -1,16 +1,21 @@
 import React from "react";
 import {useState} from 'react';
 import axios from "axios";
+import {useHistory} from 'react-router-dom';
+
 
 function AddGolfOuting() {
     const [golfVenue, setGolfVenue] = useState('');
     const [venueType, setVenueType] = useState('');
     const [yardage, setYardage] = useState(0);
 
+    const history = useHistory();
+
     const addGolf = (e) => {
         e.preventDefault();
         axios.post('/golf_venues', {name: golfVenue, type: venueType, yardage: yardage})
         .then(() => {
+            history.push('/golf_history');
 
         }).catch((error) => {
             console.log(error);

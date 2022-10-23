@@ -32,6 +32,10 @@ function Nav() {
               Golf History
             </Link>
 
+            <Link className="navLink" to="/addgolfouting">
+              Add Golf Experience
+            </Link>
+
             <Link className="navLink" to="/info">
               Info Page
             </Link>

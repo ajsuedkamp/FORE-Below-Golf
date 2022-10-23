@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './GolfHistory.css';
 import {useHistory} from 'react-router-dom';
+import AddGolfOuting from '../AddGolfOuting/AddGolfOuting';
 
 function GolfHistory() {
     const [venueList, setVenueList] = useState([]);
