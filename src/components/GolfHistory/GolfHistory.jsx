@@ -32,13 +32,13 @@ function GolfHistory() {
     return ( 
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                <TableHead>
-                    <TableRow>
-                        <TableCell>Venue</TableCell>
-                        <TableCell align="right">Type</TableCell>
-                        <TableCell align="right">Yardage</TableCell>
-                        <TableCell align="right">Date</TableCell>
-                        <TableCell align="right">Note</TableCell>
+                <TableHead style={{backgroundColor: 'greenyellow', textDecoration:'bold'}} >
+                    <TableRow >
+                        <TableCell align='center'style={{borderRight: '2px solid black'}} >Venue</TableCell>
+                        <TableCell align='center'style={{borderRight: '2px solid black'}}>Type</TableCell>
+                        <TableCell align='center'style={{borderRight: '2px solid black'}}>Yardage</TableCell>
+                        <TableCell align='center'style={{borderRight: '2px solid black'}}>Date</TableCell>
+                        <TableCell align='center'style={{borderRight: '2px solid black'}}>Note</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -47,13 +47,13 @@ function GolfHistory() {
                         key={venue.id}
                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                     >
-                        <TableCell component="th" scope="row">
+                        <TableCell component="th" scope="row" align='center'style={{borderRight: '2px solid black'}}>
                         {venue.venue_name}
                         </TableCell>
-                        <TableCell align="right">{venue.type}</TableCell>
-                        <TableCell align="right">{venue.yardage}</TableCell>
-                        <TableCell align="right">{venue.date}</TableCell>
-                        <TableCell align="right">{venue.note}</TableCell>
+                        <TableCell align='center'style={{borderRight: '2px solid black'}}>{venue.type}</TableCell>
+                        <TableCell align='center'style={{borderRight: '2px solid black'}}>{venue.yardage}</TableCell>
+                        <TableCell align='center'style={{borderRight: '2px solid black'}}>{venue.date}</TableCell>
+                        <TableCell align='center'style={{borderRight: '2px solid black'}}>{venue.note}</TableCell>
                     </TableRow>
                     ))}
                 </TableBody>
