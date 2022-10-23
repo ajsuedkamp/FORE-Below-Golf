@@ -13,7 +13,7 @@ function AddGolfOuting() {
 
     const addGolf = (e) => {
         e.preventDefault();
-        axios.post('/golf_venues', {name: golfVenue, type: venueType, yardage: yardage})
+        axios.post('/golf_history', {name: golfVenue, type: venueType, yardage: yardage})
         .then(() => {
             history.push('/golf_history');
 
