@@ -4,6 +4,7 @@ import axios from 'axios';
 import './GolfHistory.css';
 import {useHistory} from 'react-router-dom';
 import AddGolfOuting from '../AddGolfOuting/AddGolfOuting';
+import {TableContainer, Table, TableHead, TableBody, TableRow, TableCell, Paper } from @mui
 
 function GolfHistory() {
     const [venueList, setVenueList] = useState([]);
