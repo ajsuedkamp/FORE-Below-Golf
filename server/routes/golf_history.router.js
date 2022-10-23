@@ -21,15 +21,5 @@ router.get('/', (req,res) => {
     }
 });
 
-router.post('/', (req, res) => {
-    console.log('/golf_history POST route');
-    console.log(req.body);
-    console.log('is authenticated?', req.isAuthenticated());
-    console.log('user', req.user);
-    if(req.isAuthenticated()) {
-        const queryText = ``
-    }
-    res.sendStatus(200);
-});
 
 module.exports = router;

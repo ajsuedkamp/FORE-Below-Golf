@@ -4,10 +4,12 @@ import axios from "axios";
 
 function AddGolfOuting() {
     const [golfVenue, setGolfVenue] = useState('');
+    const [venueType, setVenueType] = useState('');
+    const [yardage, setYardage] = useState(0);
 
     const addGolf = (e) => {
         e.preventDefault();
-        axios.post('/golf_history', {name: golfVenue})
+        axios.post('/golf_venues', {name: golfVenue, type: venueType, yardage: yardage})
         .then(() => {
 
         }).catch((error) => {
@@ -19,7 +21,13 @@ function AddGolfOuting() {
         <div>
             <h2>Add Golf Experience</h2>
             <form onSubmit={addGolf}>
-                <input value={golfVenue} onChange={(e) => setGolfVenue(e.target.value)} type="text" />
+                <input placeholder="Name of Venue" value={golfVenue} onChange={(e) => setGolfVenue(e.target.value)} type="text" />
+                <select value={venueType} onChange={(e) => setVenueType(e.target.value)}>
+                    <option value ="simulator">Simulator</option>
+                    <option value ="Indoor Dome">Indoor Dome</option>
+                    <option value ="heated outddoor ">Heated Outdoor Hitting Area</option>
+                </select>
+                <input value={yardage} onChange={(e) => setYardage(e.target.value)}></input>
                 <input type="submit"/>
             </form>
         </div>
