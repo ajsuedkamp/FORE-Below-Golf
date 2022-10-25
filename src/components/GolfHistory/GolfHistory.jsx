@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './GolfHistory.css';
 import {useHistory} from 'react-router-dom';
-import AddGolfOuting from '../AddGolfOuting/AddGolfOuting';
+import UserPage from '../UserPage/UserPage';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -11,10 +11,12 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import {useSelector} from 'react-redux';
 
 function GolfHistory() {
     const [venueList, setVenueList] = useState([]);
     const history = useHistory();
+    const user = useSelector((store) => store.user);
 
     useEffect(() => {
         fetchVenues();
@@ -29,7 +31,9 @@ function GolfHistory() {
             alert('Something went wrong in GET venues!');
         })
     }
-    return ( 
+    return (
+        <>
+        <h1>{user.username}'s Golf History</h1>
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead style={{backgroundColor: 'greenyellow', textDecoration:'bold'}} >
@@ -43,8 +47,9 @@ function GolfHistory() {
                 </TableHead>
                 <TableBody>
                     {venueList.map((venue) => (
+                        
                     <TableRow
-                        key={venue.id}
+                        key={venue.history_id}
                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                     >
                         <TableCell component="th" scope="row" align='center'style={{borderRight: '2px solid black'}}>
@@ -59,6 +64,7 @@ function GolfHistory() {
                 </TableBody>
             </Table>
         </TableContainer>
+        </>
     )
 }
     

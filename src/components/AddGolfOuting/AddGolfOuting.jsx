@@ -28,6 +28,10 @@ function AddGolfOuting() {
             <form onSubmit={addGolf}>
                 <input placeholder="Name of Venue" value={golfVenue} onChange={(e) => setGolfVenue(e.target.value)} type="text" />
                 <select value={venueType} onChange={(e) => setVenueType(e.target.value)}>
+                
+                   {/* {venuesList.map((venue) => {
+                    <option value={venue.name}>{venue.name}</option>
+                   })} */}
                     <option value ="simulator">Simulator</option>
                     <option value ="Indoor Dome">Indoor Dome</option>
                     <option value ="heated outddoor ">Heated Outdoor Hitting Area</option>
