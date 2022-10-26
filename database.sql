@@ -39,3 +39,9 @@ VALUES ('1','1','great venue');
 SELECT * FROM "golf_venues" 
 JOIN "golf_history" ON "golf_venues"."id" = "golf_history"."golf_venue_id"
 WHERE "golf_history"."user_id"= 1; --change 1 to $1
+
+
+SELECT "golf_venues"."venue_name", "golf_venues"."id" AS "venues_id", "golf_venues"."type", "golf_venues"."yardage", "golf_venues"."user_id", "golf_history"."id" AS "history_id", "golf_history"."date", "golf_history"."note"
+        FROM "golf_venues"
+        JOIN "golf_history" ON "golf_venues"."id" = "golf_history"."golf_venue_id"
+        WHERE "golf_history"."user_id"= $1;`;

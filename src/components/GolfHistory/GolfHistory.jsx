@@ -11,12 +11,13 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 
 function GolfHistory() {
     const [venueList, setVenueList] = useState([]);
     const history = useHistory();
     const user = useSelector((store) => store.user);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         fetchVenues();
@@ -31,6 +32,12 @@ function GolfHistory() {
             alert('Something went wrong in GET venues!');
         })
     }
+
+    const displayVenueDetails = (venueToDisplay) => {
+        console.log(venueToDisplay);
+        dispatch({ type: 'SET_HISTORY_DETAILS', payload: venueToDisplay })
+    }
+
     return (
         <>
         <h1>{user.username}'s Golf History</h1>
@@ -39,10 +46,9 @@ function GolfHistory() {
                 <TableHead style={{backgroundColor: 'greenyellow', textDecoration:'bold'}} >
                     <TableRow >
                         <TableCell align='center'style={{borderRight: '2px solid black'}} >Venue</TableCell>
-                        <TableCell align='center'style={{borderRight: '2px solid black'}}>Type</TableCell>
-                        <TableCell align='center'style={{borderRight: '2px solid black'}}>Yardage</TableCell>
                         <TableCell align='center'style={{borderRight: '2px solid black'}}>Date</TableCell>
                         <TableCell align='center'style={{borderRight: '2px solid black'}}>Note</TableCell>
+                        <TableCell align='center'style={{borderRight: '2px solid black'}}>Explore</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -55,55 +61,23 @@ function GolfHistory() {
                         <TableCell component="th" scope="row" align='center'style={{borderRight: '2px solid black'}}>
                         {venue.venue_name}
                         </TableCell>
-                        <TableCell align='center'style={{borderRight: '2px solid black'}}>{venue.type}</TableCell>
-                        <TableCell align='center'style={{borderRight: '2px solid black'}}>{venue.yardage}</TableCell>
                         <TableCell align='center'style={{borderRight: '2px solid black'}}>{venue.date}</TableCell>
                         <TableCell align='center'style={{borderRight: '2px solid black'}}>{venue.note}</TableCell>
+                        <TableCell align='center'style={{borderRight: '2px solid black'}}>
+                            <button onClick={() => displayVenueDetails(venue)}>Details</button>
+                        </TableCell>
                     </TableRow>
                     ))}
                 </TableBody>
             </Table>
         </TableContainer>
+        <button onClick={() => history.push('/addgolfouting')}>Add Golf Outing</button> 
+        <button>Find New Venue</button>
         </>
+       
     )
 }
-    
-        // <div className="container">
-        //     <h2>Golf History</h2>
-        //     {
-        //         venueList.map(venue => {
-        //             return (
-        //             <div key={venue.id}>
-        //                 <table className="history">
-        //                     <thead>
-        //                        <tr>
-        //                         <th>Venue</th>
-        //                         <th>Type</th>
-        //                         <th>Yardage</th>
-        //                         <th>Date</th>
-        //                         <th>Notes</th>
-        //                        </tr> 
-        //                     </thead>
-        //                     <tbody>
-        //                         <tr>
-        //                             <td>{venue.venue_name}</td>
-        //                             <td>{venue.type}</td>
-        //                             <td>{venue.yardage}</td>
-        //                             <td>{venue.date}</td>
-        //                             <td>{venue.note}</td>
-        //                             <td>
-        //                                 <button onClick={() => history.push('/venuedetails')}>Details</button>
-        //                             </td>
-        //                         </tr>
-        //                     </tbody>
 
-                 
-        //                 </table>
-        //             </div>
-        //             )
-        //         })
-        //     }
-        // </div>
 
 
 
