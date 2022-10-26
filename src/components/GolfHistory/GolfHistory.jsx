@@ -83,7 +83,7 @@ function GolfHistory() {
             </Table>
         </TableContainer>
         <button onClick={() => history.push('/addgolfouting')}>Add Golf Outing</button> 
-        <button>Find New Venue</button>
+        <button onClick={() => history.push('/allvenues')}>View All Venues</button>
         </>
        
     )
