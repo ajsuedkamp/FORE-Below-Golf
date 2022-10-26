@@ -6,14 +6,14 @@ import {useHistory} from 'react-router-dom';
 
 function AddGolfOuting() {
     const [golfVenue, setGolfVenue] = useState('');
-    const [venueType, setVenueType] = useState('');
-    const [yardage, setYardage] = useState(0);
+    const [date, setDate] = useState('');
+    const [note, setNote] = useState(0);
 
     const history = useHistory();
 
     const addGolf = (e) => {
         e.preventDefault();
-        axios.post('/golf_history', {name: golfVenue, type: venueType, yardage: yardage})
+        axios.post('/golf_history', {name: golfVenue, date: date, note: note})
         .then(() => {
             history.push('/golf_history');
 
@@ -27,16 +27,16 @@ function AddGolfOuting() {
             <h2>Add Golf Outing</h2>
             <form onSubmit={addGolf}>
                 <input placeholder="Name of Venue" value={golfVenue} onChange={(e) => setGolfVenue(e.target.value)} type="text" />
-                <select value={venueType} onChange={(e) => setVenueType(e.target.value)}>
+                <input value={date} onChange={(e) => setDate(e.target.value)} />
 {/*                 
                    venuesList.map((venue) => {
                     <option value={venue.name}>{venue.name}</option>
                    }) */}
-                    <option value ="simulator">Simulator</option>
+                    {/* <option value ="simulator">Simulator</option>
                     <option value ="Indoor Dome">Indoor Dome</option>
                     <option value ="heated outddoor ">Heated Outdoor Hitting Area</option>
-                </select>
-                <input value={yardage} onChange={(e) => setYardage(e.target.value)}></input>
+                </select> */}
+                <input value={note} onChange={(e) => setNote(e.target.value)}></input>
                 <input type="submit"/>
             </form>
         </div>

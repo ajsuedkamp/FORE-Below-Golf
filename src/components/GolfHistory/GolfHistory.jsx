@@ -39,6 +39,15 @@ function GolfHistory() {
         history.push('/venuedetail');
     }
 
+    const deleteHistory = (venueId) => {
+        axios.delete(`/golf_history/${venueId}`).then((response) => {
+            fetchVenues();
+        }).catch((error) => {
+            console.log(error);
+            alert('Something went wrong in DELETE request!')
+        });
+    }
+
     return (
         <>
         <h1>{user.username}'s Golf History</h1>
@@ -56,7 +65,7 @@ function GolfHistory() {
                     {venueList.map((venue) => (
                         
                     <TableRow
-                        key={venue.history_id}
+                        key={venue.id}
                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                     >
                         <TableCell component="th" scope="row" align='center'style={{borderRight: '2px solid black'}}>
@@ -66,6 +75,7 @@ function GolfHistory() {
                         <TableCell align='center'style={{borderRight: '2px solid black'}}>{venue.note}</TableCell>
                         <TableCell align='center'style={{borderRight: '2px solid black'}}>
                             <button onClick={() => displayVenueDetails(venue)}>Details</button>
+                            <button onClick={() => deleteHistory(venue.id)}>Delete</button>
                         </TableCell>
                     </TableRow>
                     ))}
