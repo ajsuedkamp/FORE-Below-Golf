@@ -8,7 +8,6 @@ function AddGolfOuting() {
     const [golfVenue, setGolfVenue] = useState('');
     const [venueType, setVenueType] = useState('');
     const [yardage, setYardage] = useState(0);
-    const [venueList, setVenueList] = useState([]);
 
     const history = useHistory();
 
