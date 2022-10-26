@@ -20,7 +20,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import GolfHistory from '../GolfHistory/GolfHistory';
-import VenueDetails from '../VenueDetails/VenueDetails';
+import VenueDetail from '../VenueDetail/VenueDetail';
 import AddGolfOuting from '../AddGolfOuting/AddGolfOuting';
 
 import './App.css';
@@ -57,8 +57,8 @@ function App() {
           </Route>
           <Route 
             exact 
-            path="/venuedetails">
-              <VenueDetails />
+            path="/venuedetail">
+              <VenueDetail />
           </Route>
           <Route 
             exact 

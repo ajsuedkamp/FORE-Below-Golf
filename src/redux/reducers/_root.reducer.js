@@ -5,9 +5,9 @@ import user from './user.reducer';
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
 // This is imported in index.js as rootSaga
-const selectedGolfHistory = (state = {}, action) => {
+const selectedOutting = (state = {}, action) => {
   switch (action.type) {
-    case 'SET_HISTORY_DETAILS':
+    case 'SET_VENUE_DETAILS':
       return action.payload;
     default:
       return state;
@@ -18,7 +18,7 @@ const selectedGolfHistory = (state = {}, action) => {
 const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in
-  selectedGolfHistory,
+  selectedOutting,
 });
 
 export default rootReducer;

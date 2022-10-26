@@ -35,7 +35,7 @@ function GolfHistory() {
 
     const displayVenueDetails = (venueToDisplay) => {
         console.log(venueToDisplay);
-        dispatch({ type: 'SET_HISTORY_DETAILS', payload: venueToDisplay })
+        dispatch({ type: 'SET_VENUE_DETAILS', payload: venueToDisplay })
     }
 
     return (
