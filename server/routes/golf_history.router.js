@@ -80,6 +80,23 @@ router.delete('/:id', (req, res) => {
     }
 });
 
+router.put('/:id', (req, res) => {
+    if (req.isAuthenticated()) {
+    const queryText = `UPDATE "golf_history" SET "golf_venue_id" = $1, "date" = $2, "note" = $3
+    WHERE "id" = $4 AND "user_id" = $5;`; // AND "user_id" = $5; // For solo projects
+    pool.query(queryText, [req.body.venueId, req.body.date, req.body.note, req.params.id, req.user.id])
+        .then(results => {
+          res.sendStatus(200);
+        }).catch(error => {
+          console.log(error);
+          res.sendStatus(500);
+        });
+    } else {
+        res.sendStatus(403);
+    }
+  });
+
+
 
 
 

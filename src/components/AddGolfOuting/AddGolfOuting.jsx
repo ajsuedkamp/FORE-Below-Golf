@@ -4,6 +4,7 @@ import axios from "axios";
 import {useHistory} from 'react-router-dom';
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 
 function AddGolfOuting() {
@@ -11,10 +12,9 @@ function AddGolfOuting() {
     const [date, setDate] = useState('');
     const [note, setNote] = useState(0);
     const [venueId, setVenueId] = useState('1');
-
     const history = useHistory();
-
     const { id } = useParams();
+    const dispatch = useDispatch();
 
     useEffect(() => {
         if (id) { // Return false if id is undefined
@@ -35,7 +35,7 @@ function AddGolfOuting() {
     const addGolf = (e) => {
         e.preventDefault();
         if(id) {
-            //TODO edit route
+            dispatch({ type: 'EDIT_VENUE', payload: { venueId, date, note, id} }, history);
         } else {
             axios.post('/golf_history', {name: golfVenue, date: date, note: note, venueId: venueId})
             .then(() => {
@@ -47,20 +47,27 @@ function AddGolfOuting() {
             });
         }
     }
+
+
     return (
         <div>
-            <h2>Add Golf Outing</h2>
+            <h2>{id ? <h1>Edit Outting</h1> : <h1>Add Outting</h1> }</h2>
             <form onSubmit={addGolf}>
                 {/* <input placeholder="Name of Venue" value={golfVenue} onChange={(e) => setGolfVenue(e.target.value)} type="text" /> */}
-                <input value={date} onChange={(e) => setDate(e.target.value)} />
+                
                 
                 {/* value = id of venue */}
-                <select value={venueId} onChange={(e) => setVenueId(e.target.value)}>
+                Name: <select value={venueId} onChange={(e) => setVenueId(e.target.value)}>
+            
                     <option value ="1">Inside Edge</option>
                     <option value ="2">Top Golf</option>
                     <option value ="3">X-Golf</option>
                 </select>
-                <input value={note} onChange={(e) => setNote(e.target.value)}></input>
+                <br></br>
+                Date: <input value={date} onChange={(e) => setDate(e.target.value)} />
+                <br></br>
+                Notes: <input value={note} onChange={(e) => setNote(e.target.value)}></input>
+                <br></br>
                 <input type="submit"/>
             </form>
         </div>
