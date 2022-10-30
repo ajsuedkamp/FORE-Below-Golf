@@ -12,6 +12,7 @@ function AllGolfVenues() {
 
     const fetchVenues = () => {
         axios.get('/golf_venues').then((response) => {
+            console.log(response.data);
             setVenueList(response.data);
         }).catch((error) => {
             console.log(error);
@@ -29,9 +30,10 @@ function AllGolfVenues() {
                     <div key={venue.id}>
                         <ul>
                             <li>
-                                <p>{venue.venue_name}</p>
-                                <p>{venue.type}</p>
-                                <p>{venue.yardage}</p>
+                                <h3>{venue.venue_name}</h3>
+                                <p>{venue.feature_1}</p>
+                                <p>{venue.feature_2}</p>
+                                <p>{venue.feature_3}</p>
                             </li>
                         </ul>
                     </div>

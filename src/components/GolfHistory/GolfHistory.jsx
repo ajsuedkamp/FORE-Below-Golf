@@ -36,7 +36,8 @@ function GolfHistory() {
     const displayVenueDetails = (venueToDisplay) => {
         console.log(venueToDisplay);
         dispatch({ type: 'SET_VENUE_DETAILS', payload: venueToDisplay });
-        history.push('/venuedetail');
+      
+        history.push(`/venuedetail/${venueToDisplay.golf_venue_id}`);
     }
 
     const deleteHistory = (venueId) => {

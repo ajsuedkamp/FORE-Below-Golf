@@ -51,16 +51,18 @@ function App() {
           >
             <AboutPage />
           </Route>
+          <Route path="/venuedetail/:id" exact>
+            <VenueDetail />
+         </Route>
+
           <Route 
             exact 
             path="/golf_history">
               <GolfHistory />
           </Route>
-          <Route 
-            exact 
-            path="/venuedetail">
-              <VenueDetail />
-          </Route>
+          <Route path="/edit/:id" exact>
+            <AddGolfOuting />
+         </Route>
           <Route 
             exact 
             path="/addgolfouting">

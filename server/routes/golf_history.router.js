@@ -10,9 +10,9 @@ router.post('/', (req, res) => {
     console.log('user', req.user);
     if (req.isAuthenticated()) {
         //
-        const queryText = `INSERT INTO "golf_history" ("venue_name", "date", "note", "user_id")
+        const queryText = `INSERT INTO "golf_history" ("golf_venue_id", "date", "note", "user_id")
                            VALUES($1, $2, $3, $4)`;
-        pool.query(queryText, [req.body.name, req.body.date, req.body.note, req.user.id]).then(() => {
+        pool.query(queryText, [req.body.venueId, req.body.date, req.body.note, req.user.id]).then(() => {
             res.sendStatus(201);
         }).catch((error) => {
             console.log(error);
@@ -30,7 +30,9 @@ router.get('/', (req, res) => {
     console.log('is authenticated?', req.isAuthenticated());
     console.log('user', req.user);
     if (req.isAuthenticated()) {
-        let queryText = `SELECT * FROM "golf_history" WHERE "user_id" = $1;`;
+        let queryText = `SELECT "golf_history".*, "golf_venues"."venue_name", "golf_venues"."feature_1", "golf_venues"."feature_2", "golf_venues"."feature_3" FROM "golf_history"
+                        JOIN "golf_venues" ON "golf_history"."golf_venue_id" = "golf_venues"."id"
+                        WHERE "golf_history"."user_id" = $1;`;
         pool.query(queryText, [req.user.id]).then((results) => {
             res.send(results.rows);
         }).catch((error) => {
@@ -41,6 +43,25 @@ router.get('/', (req, res) => {
         res.sendStatus(403);
     }
 });
+
+router.get('/:id', (req, res) => {
+    console.log('/golf_history GET route');
+    console.log('is authenticated?', req.isAuthenticated());
+    console.log('user', req.user);
+    if (req.isAuthenticated()) {
+        let queryText = `SELECT * FROM "golf_history" WHERE "user_id" = $1 AND id=$2;`;
+        pool.query(queryText, [req.user.id, req.params.id]).then((results) => {
+            res.send(results.rows[0]);
+        }).catch((error) => {
+            console.log(error);
+            res.sendStatus(500);
+        });
+    } else {
+        res.sendStatus(403);
+    }
+});
+
+
 
 router.delete('/:id', (req, res) => {
     console.log('/golf_history DELETE route');
