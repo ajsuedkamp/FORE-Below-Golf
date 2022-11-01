@@ -9,6 +9,8 @@ function UserPage() {
   return (
     <div className="container">
       <h2>Next on the tee, {user.username}!</h2>
+      <GolfHistory />
+      <br></br>
       <LogOutButton className="btn" />
     </div>
   );

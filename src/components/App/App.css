@@ -36,6 +36,7 @@ Button
   color: #f8f8f8;
   font-size: 1.1rem;
   outline: 0;
+  margin: 50px;
   cursor: pointer;
 }
 

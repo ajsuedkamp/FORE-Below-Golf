@@ -51,7 +51,7 @@ function GolfHistory() {
 
     return (
         <>
-        <h1>{user.username}'s Golf History</h1>
+        <h3>{user.username}'s Golf History</h3>
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead style={{backgroundColor: 'greenyellow', textDecoration:'bold'}} >

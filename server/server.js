@@ -11,6 +11,7 @@ const passport = require('./strategies/user.strategy');
 const userRouter = require('./routes/user.router');
 const golf_historyRouter = require('./routes/golf_history.router');
 const golf_venuesRouter = require('./routes/golf_venues.router');
+const golf_wishlistRouter = require('./routes/golf_wishlist.router');
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -26,6 +27,7 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/golf_history', golf_historyRouter);
 app.use('/golf_venues', golf_venuesRouter);
+app.use('/golf_wishlist', golf_wishlistRouter);
 // Serve static files
 app.use(express.static('build'));
 

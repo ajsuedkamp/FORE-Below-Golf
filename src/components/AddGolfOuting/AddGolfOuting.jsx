@@ -5,12 +5,13 @@ import {useHistory} from 'react-router-dom';
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { TextField } from "@mui/material";
 
 
 function AddGolfOuting() {
     const [golfVenue, setGolfVenue] = useState('');
     const [date, setDate] = useState('');
-    const [note, setNote] = useState(0);
+    const [note, setNote] = useState('');
     const [venueId, setVenueId] = useState('1');
     const history = useHistory();
     const { id } = useParams();
@@ -36,6 +37,7 @@ function AddGolfOuting() {
         e.preventDefault();
         if(id) {
             dispatch({ type: 'EDIT_VENUE', payload: { venueId, date, note, id} }, history);
+            history.push('/golf_history');
         } else {
             axios.post('/golf_history', {name: golfVenue, date: date, note: note, venueId: venueId})
             .then(() => {
@@ -57,14 +59,21 @@ function AddGolfOuting() {
                 
                 
                 {/* value = id of venue */}
-                Name: <select value={venueId} onChange={(e) => setVenueId(e.target.value)}>
+                
+                Name: <select value={venueId} onChange={(e) => setVenueId(e.target.value)} style={{padding:'10px'}}>
             
                     <option value ="1">Inside Edge</option>
                     <option value ="2">Top Golf</option>
                     <option value ="3">X-Golf</option>
+                    <option value ="4">Braemar Golf Dome</option>
+                    <option value ="5">Midwest Golf Dome</option>
+                    <option value ="6">Golf Zone</option>
                 </select>
+                
                 <br></br>
-                Date: <input value={date} onChange={(e) => setDate(e.target.value)} />
+                <TextField label='Date' style={{padding:'20px'}}>
+                 <input value={date} onChange={(e) => setDate(e.target.value)} />
+                </TextField>
                 <br></br>
                 Notes: <input value={note} onChange={(e) => setNote(e.target.value)}></input>
                 <br></br>
