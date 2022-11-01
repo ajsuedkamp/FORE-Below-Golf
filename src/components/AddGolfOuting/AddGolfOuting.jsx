@@ -1,3 +1,4 @@
+
 import React from "react";
 import {useState} from 'react';
 import axios from "axios";
@@ -5,7 +6,7 @@ import {useHistory} from 'react-router-dom';
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { TextField } from "@mui/material";
+
 
 
 function AddGolfOuting() {
@@ -52,8 +53,11 @@ function AddGolfOuting() {
 
 
     return (
-        <div>
-            <h2>{id ? <h1>Edit Outting</h1> : <h1>Add Outting</h1> }</h2>
+        <>
+        <h2 style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>{id ? <h1>Edit Outting</h1> : <h1>Add Outting</h1> }</h2>
+        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+            
+            <img src='images/golf_course1.jpg' style={{zoom:'100%', padding:'100px'}}></img>
             <form onSubmit={addGolf}>
                 {/* <input placeholder="Name of Venue" value={golfVenue} onChange={(e) => setGolfVenue(e.target.value)} type="text" /> */}
                 
@@ -71,15 +75,16 @@ function AddGolfOuting() {
                 </select>
                 
                 <br></br>
-                <TextField label='Date' style={{padding:'20px'}}>
-                 <input value={date} onChange={(e) => setDate(e.target.value)} />
-                </TextField>
+
                 <br></br>
                 Notes: <input value={note} onChange={(e) => setNote(e.target.value)}></input>
+                <br></br>
+                Date:  <input value={date} onChange={(e) => setDate(e.target.value)} />
                 <br></br>
                 <input type="submit"/>
             </form>
         </div>
+        </>
     )
 }
 

@@ -2,7 +2,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
+import Grid from '@mui/material/Grid';
+import Card from '@mui/material/Card';
 
 function VenueDetail() {
     const outting = useSelector(store => store.selectedOutting);
@@ -14,15 +15,21 @@ function VenueDetail() {
     }, [id]);
     
     return(
-        <div>
-            <h3>{outting.venue_name}</h3>
-            <ul>
-                <li>{outting.feature_1}</li>
-                <li>{outting.feature_2}</li>
-                <li>{outting.feature_3}</li>
-            </ul>
-            <p>{outting.note}</p>
-            <Link to={`/edit/${outting.id}`}>Edit</Link>
+       
+        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+          
+                   <Card sx={{ width: 400, height: 400 }} >
+                        <h1>{outting.venue_name}</h1>
+                        <ul>
+                            <li>{outting.feature_1}</li>
+                            <li>{outting.feature_2}</li>
+                            <li>{outting.feature_3}</li>
+                        </ul>
+                        <p>Note:   {outting.note}</p>
+                        <Link to={`/edit/${outting.id}`}>Edit</Link>
+                     </Card>
+                    
+       
         </div>
     )
 }

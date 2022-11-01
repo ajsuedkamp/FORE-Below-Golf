@@ -12,6 +12,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import {useSelector, useDispatch} from 'react-redux';
+import { Button} from "@mui/material";
 
 function GolfHistory() {
     const [venueList, setVenueList] = useState([]);
@@ -75,16 +76,16 @@ function GolfHistory() {
                         <TableCell align='center'style={{borderRight: '2px solid black'}}>{venue.date}</TableCell>
                         <TableCell align='center'style={{borderRight: '2px solid black'}}>{venue.note}</TableCell>
                         <TableCell align='center'style={{borderRight: '2px solid black'}}>
-                            <button onClick={() => displayVenueDetails(venue)}>Details</button>
-                            <button onClick={() => deleteHistory(venue.id)}>Delete</button>
+                            <Button variant='contained' onClick={() => displayVenueDetails(venue)}>Details</Button>
+                            <Button variant='outlined' onClick={() => deleteHistory(venue.id)}>Delete</Button>
                         </TableCell>
                     </TableRow>
                     ))}
                 </TableBody>
             </Table>
         </TableContainer>
-        <button onClick={() => history.push('/addgolfouting')}>Add Golf Outing</button> 
-        <button onClick={() => history.push('/allvenues')}>View All Venues</button>
+        <Button variant='contained' style={{margin: '20px'}} onClick={() => history.push('/addgolfouting')}>Add Golf Outing</Button> 
+        <Button variant='contained' onClick={() => history.push('/allvenues')}>View All Venues</Button>
         </>
        
     )

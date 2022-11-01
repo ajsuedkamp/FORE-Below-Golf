@@ -8,8 +8,16 @@ import React from 'react';
 function AboutPage() {
   return (
     <div className="container">
+      <h1>Technologies Used</h1>
       <div>
-        <p>This about page is for anyone to read!</p>
+       <ul>
+        <li style={{fontSize: 'x-large'}}>React</li>
+        <li style={{fontSize: 'x-large'}}>Redux</li>
+        <li style={{fontSize: 'x-large'}}>Sagas</li>
+        <li style={{fontSize: 'x-large'}}>Node.js</li>
+        <li style={{fontSize: 'x-large'}}>Express</li>
+        <li style={{fontSize: 'x-large'}}>Material UI</li>
+       </ul>
       </div>
     </div>
   );
