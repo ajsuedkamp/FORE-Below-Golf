@@ -17,6 +17,10 @@ function AboutPage() {
         <li style={{fontSize: 'x-large'}}>Node.js</li>
         <li style={{fontSize: 'x-large'}}>Express</li>
         <li style={{fontSize: 'x-large'}}>Material UI</li>
+        <li style={{fontSize: 'x-large'}}>PostgreSQL</li>
+        <li style={{fontSize: 'x-large'}}>HTML</li>
+        <li style={{fontSize: 'x-large'}}>CSS</li>
+        <li style={{fontSize: 'x-large'}}>JavaScript</li>
        </ul>
       </div>
     </div>

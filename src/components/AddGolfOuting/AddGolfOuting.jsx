@@ -54,7 +54,7 @@ function AddGolfOuting() {
 
     return (
         <>
-        <h2 style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>{id ? <h1>Edit Outting</h1> : <h1>Add Outting</h1> }</h2>
+        <h2 style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>{id ? <h1>Edit Golf Outing</h1> : <h1>Add Golf Outing</h1> }</h2>
         <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
             
             <img src='images/golf_course1.jpg' style={{zoom:'100%', padding:'100px'}}></img>
